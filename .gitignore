@@ -1,0 +1,17 @@
+__pycache__/
+*.py[cod]
+.env
+.venv/
+venv/
+.DS_Store
+# Runtime credentials and generated state
+accounts.json
+accounts_archive.json
+token_cache.json
+banned_accounts.json
+devices.json
+guild_config.json
+guild_exp_cache.json
+generator.log
+*.log
+data/

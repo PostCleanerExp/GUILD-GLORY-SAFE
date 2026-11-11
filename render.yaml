@@ -1,0 +1,31 @@
+services:
+  - type: web
+    name: guild-glory-safe
+    runtime: python
+    region: singapore
+    plan: 0.5c-512mb
+    buildCommand: pip install --no-cache-dir -r requirements.txt
+    startCommand: python -u app.py
+    healthCheckPath: /health
+    autoDeploy: true
+    disk:
+      name: guild-glory-data
+      mountPath: /var/data
+      sizeGB: 1
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.9
+      - key: PYTHONUNBUFFERED
+        value: "1"
+      - key: DATA_DIR
+        value: /var/data
+      - key: TZ
+        value: UTC
+      - key: MAX_ACTIVE_ACCOUNTS
+        value: "4"
+      - key: MAX_GENERATOR_ACCOUNTS
+        value: "6"
+      - key: MAX_GENERATOR_THREADS
+        value: "2"
+      - key: DASHBOARD_PASSWORD
+        sync: false
